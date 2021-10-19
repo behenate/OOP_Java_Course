@@ -1,9 +1,6 @@
 package agh.ics.oop;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class World {
@@ -26,6 +23,9 @@ public class World {
     }
 
     static void run(ArrayList<Direction> args) {
+//===================================================================================================================//
+//        LABORATORIA 1                                                                                              //
+//===================================================================================================================//
         int length = args.size();
         System.out.println("Zwierzak idzie do przodu");
 
@@ -42,5 +42,17 @@ public class World {
                 }
             }
         }
+//===================================================================================================================//
+//      Laboratoria 2                                                                                                //
+//===================================================================================================================//
+        Vector2d position1 = new Vector2d(1,2);
+        System.out.println(position1);
+        Vector2d position2 = new Vector2d(-2,1);
+        System.out.println(position2);
+        System.out.println(position1.add(position2));
+        System.out.println(MapDirection.NORTH);
+        System.out.println(MapDirection.NORTH.toUnitVector());
+        System.out.println(MapDirection.NORTH.next());
+        System.out.println(MapDirection.NORTH.previous());
     }
 }
