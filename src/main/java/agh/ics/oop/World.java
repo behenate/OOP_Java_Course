@@ -5,10 +5,24 @@ import java.util.stream.Collectors;
 
 public class World {
     public static void main(String[] args) {
+//        Laboratoria 1
+        /*
         System.out.println("Start");
         ArrayList<Direction> argsEnum = toEnum(args);
         run(argsEnum);
         System.out.println("Stop");
+        */
+
+
+        // Laboratoria 3
+        Animal animal = new Animal();
+
+        ArrayList<MoveDirection> directions = new OptionsParser().parse(args);
+        for (MoveDirection dir: directions) {
+            animal.move(dir);
+            System.out.println(animal);
+        }
+
     }
 
     static ArrayList<Direction> toEnum(String[] args) {
@@ -55,4 +69,8 @@ public class World {
         System.out.println(MapDirection.NORTH.next());
         System.out.println(MapDirection.NORTH.previous());
     }
+//===================================================================================================================//
+//      Laboratoria 3                                                                                                //
+//===================================================================================================================//
+
 }

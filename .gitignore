@@ -8,5 +8,7 @@
 /httpRequests/
 .name
 build/
-.gradle/
+
+/.gradle/7.1/fileHashes/
+/.gradle/
 .gradle
