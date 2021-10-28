@@ -13,7 +13,6 @@ public class World {
         System.out.println("Stop");
         */
 
-
         // Laboratoria 3
         Animal animal = new Animal();
 
@@ -22,6 +21,7 @@ public class World {
             animal.move(dir);
             System.out.println(animal);
         }
+
 
     }
 
