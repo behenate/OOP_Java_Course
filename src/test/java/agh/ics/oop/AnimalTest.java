@@ -41,7 +41,6 @@ public class AnimalTest {
         Funkcja testująca dla moveTest. Obraca zwierzaka podaną liczbę razy w prawo, następnie próbuje nim wyjść
         poza mapę przodem i tyłem. Dla każdego ruchu sprawdzane jest czy pozycja jest poprawna.
     */
-    @Test
     void boundsMoveTest(int rotations, int x_vec, int y_vec) {
         Animal testAnimal = new Animal();
         int expected_x = 2;
