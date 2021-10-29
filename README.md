@@ -12,6 +12,8 @@
 
 <img src="https://d33wubrfki0l68.cloudfront.net/f2793d2266494da4621fe60be275ea15eea91330/bb2f7/static/images/2012/hello-this-is-dog.png" alt="Randall Degges - Dogs Are Great Programming Companions" style="zoom: 150%;" />
 
+![img](https://i.imgur.com/yc0V1JP.jpeg)
+
 ![Golden Retriever Service Dog Works in Lab with Owner | PEOPLE.com](https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2021%2F03%2F05%2Fscience-pup-in-644774-2000.jpg&q=85)
 
 ![16 Pictures Of The I Have No Idea What I&#39;m Doing Dog Who Still Has No Idea  What He&#39;s Doing](https://theawesomedaily.com/wp-content/uploads/2014/10/i-have-no-idea-what-im-doing-dog-feat-1.jpg)
