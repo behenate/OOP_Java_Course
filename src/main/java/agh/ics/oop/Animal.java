@@ -6,7 +6,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "(" + position.x + "," + position.y + ")";
+        return "(" + position.x + "," + position.y + ")" + ", " + mapDirection;
     }
     private Vector2d dirToVector(){
         Vector2d vector = switch (mapDirection){

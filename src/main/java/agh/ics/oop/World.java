@@ -21,8 +21,6 @@ public class World {
             animal.move(dir);
             System.out.println(animal);
         }
-
-
     }
 
     static ArrayList<Direction> toEnum(String[] args) {
