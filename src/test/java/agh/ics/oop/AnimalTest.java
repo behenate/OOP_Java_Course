@@ -1,14 +1,15 @@
 package agh.ics.oop;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AnimalTest {
-    private final Animal testAnimal = new Animal();
+    private final RectangularMap map = new RectangularMap(5,5);
+    private Animal testAnimal = new Animal(map, new Vector2d(2,2));
     private final OptionsParser testParser = new OptionsParser();
     @Test
     void integrationTests(){
-
 //        Test poprawnej orientacji
         String[] input1 = {"r", "r","r","r", "l","l","l","l"};
         ArrayList<MoveDirection> pInput1 = testParser.parse(input1);
@@ -25,6 +26,9 @@ public class AnimalTest {
 
 //        Test parsera
 //        Dane poniżej bez śmieci: ,"f", "b","r", "l", "forward", "backward","left","right"
+        map.removeAnimal(testAnimal);
+        testAnimal = new Animal(map, new Vector2d(2,2));
+
         String[] input2 = {"trololo","f","blabla", "b","rr", "r","ll f b r l", "l", "forward","kupol", "backward","forwardfas","left","smiec","right"};
         ArrayList<MoveDirection> pInput2 = testParser.parse(input2);
         MapDirection[] outputMapDir = {MapDirection.NORTH, MapDirection.NORTH, MapDirection.NORTH, MapDirection.EAST,
@@ -47,7 +51,8 @@ public class AnimalTest {
         skłądowe x i y wektora ruchu któru powinien wykonać zwierzak
     */
     void boundsMoveTest(int rotations, int x_vec, int y_vec) {
-        Animal testAnimal = new Animal();
+        map.removeAnimal(testAnimal);
+        testAnimal = new Animal(map, new Vector2d(2,2));
         int expected_x = 2;
         int expected_y = 2;
         String[] input = new String[rotations+12];

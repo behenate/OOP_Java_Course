@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class OptionsParser {
     public ArrayList<MoveDirection> parse(String[] options){
         ArrayList<MoveDirection> result = new ArrayList<>();
-        ArrayList<String> allowed = new ArrayList<>(Arrays.asList("f", "forward","b","backward","r","right","l","left"));
+        ArrayList<String> allowed = new ArrayList<String>(Arrays.asList("f", "forward","b","backward","r","right","l","left"));
         for (String word: options) {
             if (!allowed.contains(word)){
                 continue;
