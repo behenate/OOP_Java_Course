@@ -7,7 +7,7 @@ public class Animal {
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.map = map;
         this.position = initialPosition;
-        this.map.addAnimal(this);
+        this.map.place(this);
     }
     @Override
     public String toString() {

@@ -19,7 +19,6 @@ public interface IWorldMap {
      * @return True if the object can move to that position.
      */
     boolean canMoveTo(Vector2d position);
-    void addAnimal(Animal animal);
     void removeAnimal(Animal animal);
     ArrayList<Animal> getAnimals();
     /**

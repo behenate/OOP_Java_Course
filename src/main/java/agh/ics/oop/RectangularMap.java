@@ -7,18 +7,13 @@ public class RectangularMap implements IWorldMap{
     private final int width;
     private final int height;
     private final ArrayList<Animal> animals = new ArrayList<Animal>();
-    MapVisualizer visualizer;
+    private final MapVisualizer visualizer;
     public RectangularMap(int width, int height){
         this.width = width;
         this.height = height;
         visualizer =  new MapVisualizer(this);
     }
 
-    public void addAnimal(Animal animal){
-        if (!animals.contains(animal) && canMoveTo(animal.getPosition())){
-            animals.add(animal);
-        }
-    }
     public void removeAnimal(Animal animal){
             animals.remove(animal);
     }
