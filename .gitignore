@@ -12,3 +12,4 @@ build/
 /.gradle/7.1/fileHashes/
 /.gradle/
 .gradle
+/.idea/
