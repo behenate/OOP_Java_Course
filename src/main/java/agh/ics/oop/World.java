@@ -14,20 +14,13 @@ public class World {
         */
 
         // Laboratoria 3
-//        Animal animal = new Animal();
-//
-//        ArrayList<MoveDirection> directions = new OptionsParser().parse(args);
-//        for (MoveDirection dir: directions) {
-//            animal.move(dir);
-//            System.out.println(animal);
-//        }
+        Animal animal = new Animal();
 
-//        Laboratoria 4
         ArrayList<MoveDirection> directions = new OptionsParser().parse(args);
-        IWorldMap map = new RectangularMap(10, 5);
-        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
-        SimulationEngine engine = new SimulationEngine(directions, map, positions);
-        engine.runAndShow();
+        for (MoveDirection dir: directions) {
+            animal.move(dir);
+            System.out.println(animal);
+        }
     }
 
     static ArrayList<Direction> toEnum(String[] args) {

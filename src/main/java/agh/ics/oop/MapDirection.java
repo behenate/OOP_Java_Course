@@ -7,7 +7,7 @@ public enum MapDirection {
         @Override
         public String toString(){
           return "Północ";
-        };
+        }
         @Override
         public MapDirection next(){
             return EAST;
@@ -25,7 +25,7 @@ public enum MapDirection {
         @Override
         public String toString(){
             return "Południe";
-        };
+        }
         @Override
         public MapDirection next(){
             return WEST;
@@ -43,7 +43,7 @@ public enum MapDirection {
         @Override
         public String toString(){
             return "Zachód";
-        };
+        }
         @Override
         public MapDirection next(){
             return NORTH;
@@ -61,7 +61,7 @@ public enum MapDirection {
         @Override
         public String toString(){
             return "Wschód";
-        };
+        }
         @Override
         public MapDirection next(){
             return SOUTH;
