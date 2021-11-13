@@ -58,6 +58,6 @@ public class RectangularMap implements IWorldMap{
     }
     @Override
     public String toString(){
-        return visualizer.draw(new Vector2d(0,0), new Vector2d(this.width, this.height));
+        return visualizer.draw(new Vector2d(0,0), new Vector2d(this.width-1, this.height-1));
     }
 }

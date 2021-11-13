@@ -29,7 +29,6 @@ public class SimulationEngine implements IEngine{
 
 //    Część z zadania dla chętnych
     public void runAndShow() {
-        MapVisualizer visualizer = new MapVisualizer(map);
         JFrame f=new JFrame();
         f.setSize(1000,1000);
         JTextArea b = new JTextArea(map.toString());//creating instance of JButton
@@ -49,7 +48,7 @@ public class SimulationEngine implements IEngine{
             };
             animals.get(animalIndex).move(move);
             animalIndex = (animalIndex + 1) % animals.size();
-            b.setText(visualizer.draw(new Vector2d(0,0), new Vector2d(10,5)));
+            b.setText(map.toString());
             f.revalidate();
             f.repaint();
         }
