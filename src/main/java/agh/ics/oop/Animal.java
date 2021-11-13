@@ -3,7 +3,7 @@ package agh.ics.oop;
 public class Animal {
     private MapDirection mapDirection = MapDirection.NORTH;
     private Vector2d position;
-    private IWorldMap map;
+    private final IWorldMap map;
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.map = map;
         this.position = initialPosition;
@@ -19,13 +19,12 @@ public class Animal {
         };
     }
     private Vector2d dirToVector(){
-        Vector2d vector = switch (mapDirection){
+        return switch (mapDirection){
             case NORTH -> new Vector2d(0,1);
             case SOUTH -> new Vector2d(0, -1);
             case EAST -> new Vector2d(1,0);
             case WEST -> new Vector2d(-1,0);
         };
-        return vector;
     }
     public void move(MoveDirection direction){
         Vector2d newPos = position;
