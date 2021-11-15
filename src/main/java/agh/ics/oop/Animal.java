@@ -18,21 +18,13 @@ public class Animal {
             case WEST -> "W";
         };
     }
-    private Vector2d dirToVector(){
-        return switch (mapDirection){
-            case NORTH -> new Vector2d(0,1);
-            case SOUTH -> new Vector2d(0, -1);
-            case EAST -> new Vector2d(1,0);
-            case WEST -> new Vector2d(-1,0);
-        };
-    }
     public void move(MoveDirection direction){
         Vector2d newPos = position;
         switch (direction){
             case LEFT -> mapDirection = mapDirection.previous();
             case RIGHT -> mapDirection = mapDirection.next();
-            case FORWARD -> newPos = position.add(dirToVector());
-            case BACKWARD -> newPos = position.add(dirToVector().opposite());
+            case FORWARD -> newPos = position.add(mapDirection.toUnitVector());
+            case BACKWARD -> newPos = position.add(mapDirection.toUnitVector().opposite());
         }
         if (map.canMoveTo(newPos)){
             position = newPos;
