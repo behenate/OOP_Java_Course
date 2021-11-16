@@ -14,12 +14,6 @@ public class RectangularMap implements IWorldMap{
         visualizer =  new MapVisualizer(this);
     }
 
-    public void removeAnimal(Animal animal){
-            animals.remove(animal);
-    }
-    public ArrayList<Animal> getAnimals(){
-        return animals;
-    }
     @Override
     public boolean canMoveTo(Vector2d position) {
         if (position.x >= width || position.x < 0 || position.y >= height || position.y < 0){

@@ -38,6 +38,7 @@ public class Lab4IntegrationTests {
                 new Vector2d(2, 2),
                 new Vector2d(2,1)
         ));
+
         ArrayList<MapDirection> outputDir = new ArrayList<>(Arrays.asList(
                 MapDirection.NORTH,
                 MapDirection.NORTH

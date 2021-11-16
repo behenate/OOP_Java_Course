@@ -7,7 +7,6 @@ public class Animal {
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.map = map;
         this.position = initialPosition;
-        this.map.place(this);
     }
     @Override
     public String toString() {
@@ -35,5 +34,8 @@ public class Animal {
     }
     public Vector2d getPosition(){
         return position;
+    }
+    public boolean isAt(Vector2d position){
+        return this.position.equals(position);
     }
 }
