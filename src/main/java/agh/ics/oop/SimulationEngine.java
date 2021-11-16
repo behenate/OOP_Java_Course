@@ -29,7 +29,7 @@ public class SimulationEngine implements IEngine{
         }
     }
 
-//    Część z zadania dla chętnych
+    //    Część z zadania dla chętnych
     public void runAndShow() {
         JFrame f=new JFrame();
         f.setSize(1000,1000);

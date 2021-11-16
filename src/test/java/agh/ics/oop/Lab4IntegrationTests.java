@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,11 +22,10 @@ public class Lab4IntegrationTests {
         Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
         IEngine engine = new SimulationEngine(directions, map, positions);
         ArrayList<Animal> animals = new ArrayList<Animal>(Arrays.asList(
-                (Animal) map.objectAt(new Vector2d(2,0)),
+                (Animal) map.objectAt(new Vector2d(2,2)),
                 (Animal) map.objectAt(new Vector2d(3, 4))
         ));
         engine.run();
-
         for (int i = 0; i < animals.size(); i++) {
             assertEquals(outputPos.get(i), animals.get(i).getPosition());
             assertEquals(outputDir.get(i), animals.get(i).getDirection());
@@ -38,10 +38,14 @@ public class Lab4IntegrationTests {
                 new Vector2d(2, 2),
                 new Vector2d(2,1)
         ));
-        ArrayList<MapDirection> outputDir = new ArrayList<>(List.of(MapDirection.NORTH));
+
+        ArrayList<MapDirection> outputDir = new ArrayList<>(Arrays.asList(
+                MapDirection.NORTH,
+                MapDirection.NORTH
+        ));
         ArrayList<MoveDirection> directions = testParser.parse(input);
         IWorldMap map = new RectangularMap(10, 5);
-        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(2,2)};
+        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(2,1)};
         IEngine engine = new SimulationEngine(directions, map, positions);
         ArrayList<Animal> animals = new ArrayList<Animal>(Arrays.asList(
                 (Animal) map.objectAt(new Vector2d(2,2)),
@@ -54,7 +58,7 @@ public class Lab4IntegrationTests {
             assertEquals(outputDir.get(i), animals.get(i).getDirection());
         }
     }
-//    Test z kolizją zwierzaków
+    //    Test z kolizją zwierzaków
     @Test
     void IntegrationTest3(){
         String[] input = {"f", "f", "r", "r" ,"f", "f", "f", "f", "r", "r", "r", "f","r","f","r"};
