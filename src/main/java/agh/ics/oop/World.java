@@ -23,10 +23,18 @@ public class World {
 //        }
 
 //        Laboratoria 4
+//        ArrayList<MoveDirection> directions = new OptionsParser().parse(args);
+//        IWorldMap map = new RectangularMap(10, 5);
+//        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
+//        SimulationEngine engine = new SimulationEngine(directions, map, positions);
+//        System.out.print(map.toString());
+//        engine.runAndShow();
+//        Laboratoria 5
         ArrayList<MoveDirection> directions = new OptionsParser().parse(args);
-        IWorldMap map = new RectangularMap(10, 5);
+        IWorldMap map = new GrassField(10);
         Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
         SimulationEngine engine = new SimulationEngine(directions, map, positions);
+        System.out.print(map);
         engine.runAndShow();
     }
 

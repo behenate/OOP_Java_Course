@@ -11,10 +11,12 @@ public class SimulationEngine implements IEngine{
     private final IWorldMap map;
     public SimulationEngine(ArrayList<MoveDirection> moveArray, IWorldMap map, Vector2d[] initialPositions){
         this.moveArray = moveArray;
-        this.animals = map.getAnimals();
+        this.animals = new ArrayList<>();
         this.map = map;
         for (Vector2d position: initialPositions) {
-            new Animal(map, position);
+            Animal animal = new Animal(map, position);
+            animals.add(animal);
+            map.place(animal);
         }
     }
 
