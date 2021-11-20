@@ -1,57 +1,27 @@
 package agh.ics.oop;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class RectangularMap implements IWorldMap{
+public class RectangularMap extends AbstractWorldMap implements IWorldMap{
     private final int width;
     private final int height;
     private final ArrayList<Animal> animals = new ArrayList<Animal>();
-    private final MapVisualizer visualizer;
     public RectangularMap(int width, int height){
+        visualizer = new MapVisualizer(this);
         this.width = width;
         this.height = height;
-        visualizer =  new MapVisualizer(this);
     }
 
     @Override
     public boolean canMoveTo(Vector2d position) {
-        if (position.x >= width || position.x < 0 || position.y >= height || position.y < 0){
-            return false;
-        }
-        return !isOccupied(position);
+        return super.canMoveTo(position) && !(position.x >= width || position.x < 0 || position.y >= height || position.y < 0);
     }
 
     @Override
-    public boolean place(Animal animal) {
-        if (canMoveTo(animal.getPosition()) && !animals.contains(animal)){
-            animals.add(animal);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean isOccupied(Vector2d position) {
-        for (Animal currentAnimal : animals) {
-            if (currentAnimal.getPosition().equals(position)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public Object objectAt(Vector2d position) {
-        for (Animal currentAnimal : animals){
-            if (currentAnimal.getPosition().equals(position)){
-                return currentAnimal;
-            }
-        }
-        return null;
-    }
-    @Override
-    public String toString(){
-        return visualizer.draw(new Vector2d(0,0), new Vector2d(this.width-1, this.height-1));
+    Vector2d[] calculateBounds() {
+        return new Vector2d[]{
+                new Vector2d(0,0),
+                new Vector2d(width-1, height-1)
+        };
     }
 }
