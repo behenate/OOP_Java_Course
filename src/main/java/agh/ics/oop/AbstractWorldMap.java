@@ -2,11 +2,9 @@ package agh.ics.oop;
 
 import java.util.ArrayList;
 
-public abstract class AbstractWorldMap{
+public abstract class AbstractWorldMap implements IWorldMap{
     protected final ArrayList<Animal> animals = new ArrayList<Animal>();
-    protected MapVisualizer visualizer;
-
-
+    protected MapVisualizer visualizer = new MapVisualizer(this);
 
     public boolean place(Animal animal) {
         if (!canMoveTo(animal.getPosition()) || animals.contains(animal)){

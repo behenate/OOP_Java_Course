@@ -6,7 +6,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GrassField extends AbstractWorldMap implements IWorldMap{
     private ArrayList<Grass> grasses = new ArrayList<>();
     public GrassField(int n){
-        visualizer = new MapVisualizer(this);
         for (int i = 0; i < n; i++) {
             placeGrass(n);
         }
@@ -24,13 +23,11 @@ public class GrassField extends AbstractWorldMap implements IWorldMap{
 
     @Override
     public boolean isOccupied(Vector2d position) {
-        if (super.isOccupied(position))
-            return true;
         for (Grass grass: grasses){
             if (grass.getPosition().equals(position))
                 return true;
         }
-        return false;
+        return super.isOccupied(position);
     }
 
     @Override
@@ -47,8 +44,8 @@ public class GrassField extends AbstractWorldMap implements IWorldMap{
 
     @Override
     Vector2d[] calculateBounds() {
-        Vector2d lowerLeft = animals.get(0).getPosition();
-        Vector2d upperRight = animals.get(0).getPosition();
+        Vector2d lowerLeft = new Vector2d(999999,999999);
+        Vector2d upperRight = new Vector2d(-999999,-999999);
         for (Animal animal : animals) {
             lowerLeft = lowerLeft.lowerLeft(animal.getPosition());
             upperRight = upperRight.upperRight(animal.getPosition());

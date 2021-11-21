@@ -71,7 +71,7 @@ public class GrassFieldTest {
         assertEquals(testMap.objectAt(new Vector2d(2,2)), sid);
         assertEquals(diego, testMap.objectAt(new Vector2d(100, 100)));
         sid.move(MoveDirection.FORWARD);
-        assertNull(testMap.objectAt(new Vector2d(2, 2)));
+        assertFalse(testMap.objectAt(new Vector2d(2, 2)) instanceof Animal);
     }
     @Test
     void testIsOccupied(){
@@ -99,5 +99,17 @@ public class GrassFieldTest {
             }
         }
         assertEquals(sid, testMap.objectAt(new Vector2d(2,2)));
+    }
+    @Test
+    void testToString(){
+        //Sprawdzam czy widoczna jest zadana ilość trawy
+        IWorldMap testMap = new GrassField(10);
+        String mapString = testMap.toString();
+        int star_cnt = 0;
+        for (int i = 0; i < mapString.length(); i++) {
+            if(mapString.charAt(i)=='*')
+                star_cnt ++;
+        }
+        assertEquals(10, star_cnt);
     }
 }

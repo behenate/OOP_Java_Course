@@ -98,4 +98,5 @@ public class RectangularMapTest {
         }
         assertEquals(sid, testMap.objectAt(new Vector2d(2,2)));
     }
+
 }

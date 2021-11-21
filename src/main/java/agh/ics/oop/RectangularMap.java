@@ -5,9 +5,7 @@ import java.util.ArrayList;
 public class RectangularMap extends AbstractWorldMap implements IWorldMap{
     private final int width;
     private final int height;
-    private final ArrayList<Animal> animals = new ArrayList<Animal>();
     public RectangularMap(int width, int height){
-        visualizer = new MapVisualizer(this);
         this.width = width;
         this.height = height;
     }
