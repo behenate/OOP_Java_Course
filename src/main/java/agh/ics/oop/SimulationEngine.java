@@ -44,7 +44,7 @@ public class SimulationEngine implements IEngine{
         int animalIndex = 0;
         for (MoveDirection move: moveArray) {
             try {
-                Thread.sleep(700);
+                Thread.sleep(500);
             }catch (InterruptedException e){
                 System.out.println("blabla cos nie dziala");
             };

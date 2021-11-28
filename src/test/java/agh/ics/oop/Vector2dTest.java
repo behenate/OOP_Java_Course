@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Vector2dTest {
-    Vector2d v1 = new Vector2d(1,1);
-    Vector2d v2 = new Vector2d(-1,-1);
-    Vector2d v3 = new Vector2d(1,1);
-    Vector2d v4 = new Vector2d(-1,1);
-    Vector2d v5 = new Vector2d(1,-1);
+    final Vector2d v1 = new Vector2d(1,1);
+    final Vector2d v2 = new Vector2d(-1,-1);
+    final Vector2d v3 = new Vector2d(1,1);
+    final Vector2d v4 = new Vector2d(-1,1);
+    final Vector2d v5 = new Vector2d(1,-1);
     @Test
     void textEquals(){
         assertTrue(v1.equals(v3));
