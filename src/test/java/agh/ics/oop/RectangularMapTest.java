@@ -65,8 +65,16 @@ public class RectangularMapTest {
         Animal maniek = new Animal(testMap, new Vector2d(2,2));
         Animal diego = new Animal(testMap, new Vector2d(100,100));
         testMap.place(sid);
-        testMap.place(maniek);
-        testMap.place(diego);
+        try{
+            testMap.place(maniek);
+        }catch (IllegalArgumentException e){
+            assertEquals("Pole (2,2) nie jest dobrym polem dla zwierzaka!",e.getMessage());
+        };
+        try{
+            testMap.place(diego);
+        }catch (IllegalArgumentException e){
+            assertEquals("Pole (100,100) nie jest dobrym polem dla zwierzaka!",e.getMessage());
+        };
         assertEquals(testMap.objectAt(new Vector2d(2,2)), sid);
         assertNull(testMap.objectAt(new Vector2d(100, 100)));
         sid.move(MoveDirection.FORWARD);

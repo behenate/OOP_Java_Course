@@ -7,13 +7,17 @@ import java.util.LinkedHashMap;
 public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver{
     protected final HashMap<Vector2d, IMapElement> mapElements = new LinkedHashMap<>();
     protected final MapVisualizer visualizer = new MapVisualizer(this);
-
-    public boolean place(Animal animal) {
+    protected final MapBoundary boundary = new MapBoundary();
+    public boolean place(Animal animal) throws IllegalArgumentException {
         if (!canMoveTo(animal.getPosition())){
-            return false;
+            throw new IllegalArgumentException("Pole " + animal.getPosition() + " nie jest dobrym polem dla zwierzaka!");
         }
         animal.addObserver(this);
+        animal.addObserver(boundary);
+        boundary.positionChanged(new Vector2d(0,0), animal.getPosition());
         mapElements.put(animal.getPosition(), animal);
+
+
         return true;
     }
 
@@ -28,9 +32,7 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     }
 
     public String toString() {
-        Vector2d lowerLeft = calculateBounds()[0];
-        Vector2d upperRight = calculateBounds()[1];
-        return visualizer.draw(lowerLeft, upperRight);
+        return visualizer.draw(boundary.lowerLeft(), boundary.upperRight());
     }
 
     public boolean canMoveTo(Vector2d position){
@@ -39,11 +41,9 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
 
     @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
-
         IMapElement movedElement = mapElements.get(oldPosition);
         mapElements.remove(oldPosition);
         mapElements.put(newPosition, movedElement);
-
     }
 
     abstract Vector2d[] calculateBounds();

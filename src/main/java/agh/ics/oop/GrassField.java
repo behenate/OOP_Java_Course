@@ -17,7 +17,11 @@ public class GrassField extends AbstractWorldMap implements IWorldMap{
             posY = ThreadLocalRandom.current().nextInt(0, (int)Math.sqrt(n*10) + 1);
         }
         Vector2d grassPos = new Vector2d(posX, posY);
-        mapElements.put(grassPos,new Grass(grassPos));
+        Grass newGrass = new Grass(grassPos);
+        newGrass.addObserver(boundary);
+        mapElements.put(grassPos, newGrass);
+        boundary.positionChanged(new Vector2d(0,0), grassPos);
+
     }
     @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition){
@@ -25,10 +29,7 @@ public class GrassField extends AbstractWorldMap implements IWorldMap{
         super.positionChanged(oldPosition, newPosition);
         if (objAtNew instanceof Grass)
             placeGrass(1);
-
     }
-
-
 
     @Override
     Vector2d[] calculateBounds() {

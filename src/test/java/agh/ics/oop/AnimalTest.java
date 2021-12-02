@@ -27,23 +27,30 @@ public class AnimalTest {
 
 //        Test parsera
 //        Dane poniżej bez śmieci: ,"f", "b","r", "l", "forward", "backward","left","right"
+        int e_cnt = 0;
         map = new RectangularMap(5,5);
         testAnimal = new Animal(map, new Vector2d(2,2));
         map.place(testAnimal);
         String[] input2 = {"trololo","f","blabla", "b","rr", "r","ll f b r l", "l", "forward","kupol", "backward","forwardfas","left","smiec","right"};
-        ArrayList<MoveDirection> pInput2 = testParser.parse(input2);
-        MapDirection[] outputMapDir = {MapDirection.NORTH, MapDirection.NORTH, MapDirection.NORTH, MapDirection.EAST,
-                MapDirection.NORTH, MapDirection.NORTH, MapDirection.NORTH, MapDirection.WEST, MapDirection.NORTH};
-        int[][] outPosInt = {{2,2}, {2,3}, {2,2}, {2,2}, {2,2}, {2,3},{2,2},{2,2},{2,2}};
-        Vector2d[] outputPos = new Vector2d[outPosInt.length];
-        for (int i = 0; i < outPosInt.length; i++) {
-            outputPos[i] = new Vector2d(outPosInt[i][0], outPosInt[i][1]);
+
+        try{
+            ArrayList<MoveDirection> pInput2 = testParser.parse(input2);
+            MapDirection[] outputMapDir = {MapDirection.NORTH, MapDirection.NORTH, MapDirection.NORTH, MapDirection.EAST,
+                    MapDirection.NORTH, MapDirection.NORTH, MapDirection.NORTH, MapDirection.WEST, MapDirection.NORTH};
+            int[][] outPosInt = {{2,2}, {2,3}, {2,2}, {2,2}, {2,2}, {2,3},{2,2},{2,2},{2,2}};
+            Vector2d[] outputPos = new Vector2d[outPosInt.length];
+            for (int i = 0; i < outPosInt.length; i++) {
+                outputPos[i] = new Vector2d(outPosInt[i][0], outPosInt[i][1]);
+            }
+            for (int i = 0; i < pInput2.size(); i++) {
+                assertEquals(outputMapDir[i], testAnimal.getDirection());
+                assertEquals(outputPos[i], testAnimal.getPosition());
+                testAnimal.move(pInput2.get(i));
+            }
+        }catch (Exception e){
+            assertEquals("trololo is not legal move specification", e.getMessage());
         }
-        for (int i = 0; i < pInput2.size(); i++) {
-            assertEquals(outputMapDir[i], testAnimal.getDirection());
-            assertEquals(outputPos[i], testAnimal.getPosition());
-            testAnimal.move(pInput2.get(i));
-        }
+
     }
 
     /*
