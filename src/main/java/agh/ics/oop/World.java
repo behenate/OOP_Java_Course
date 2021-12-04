@@ -13,8 +13,8 @@ public class World {
 //        Zamiast run wywołuję run and show, które robi dokładnie to co run, tylko pokazuje informacje z punku 7.
             engine.runAndShow();
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-            System.out.println("Program kończy działanie");
+            System.out.print(e.getMessage());
+            System.exit(1);
         }
     }
 }
