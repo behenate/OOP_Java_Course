@@ -1,5 +1,7 @@
 package agh.ics.oop;
 
+import javafx.scene.control.Label;
+
 import java.util.ArrayList;
 
 public class Animal extends AbstractWorldMapElement {
@@ -8,6 +10,7 @@ public class Animal extends AbstractWorldMapElement {
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.map = map;
         this.position = initialPosition;
+        label=new Label(this.toString());
     }
     @Override
     public String toString() {
@@ -37,4 +40,5 @@ public class Animal extends AbstractWorldMapElement {
     public boolean isAt(Vector2d position){
         return this.position.equals(position);
     }
+
 }

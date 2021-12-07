@@ -31,16 +31,16 @@ public class SimulationEngine implements IEngine{
 
     //    Część z zadania dla chętnych
     public void runAndShow() {
-        JFrame f=new JFrame();
-        f.setSize(1000,1000);
-        JTextArea b = new JTextArea(map.toString());//creating instance of JButton
-        b.setBounds(50,50,900, 900);
-        Font font = b.getFont();
-        float size = font.getSize() + 5.0f;
-        b.setFont( font.deriveFont(size) );
-        f.add(b);
-        f.setLayout(null);
-        f.setVisible(true);
+//        JFrame f=new JFrame();
+//        f.setSize(1000,1000);
+//        JTextArea b = new JTextArea(map.toString());//creating instance of JButton
+//        b.setBounds(50,50,900, 900);
+//        Font font = b.getFont();
+//        float size = font.getSize() + 5.0f;
+//        b.setFont( font.deriveFont(size) );
+//        f.add(b);
+//        f.setLayout(null);
+//        f.setVisible(true);
         int animalIndex = 0;
         for (MoveDirection move: moveArray) {
             try {
@@ -50,10 +50,10 @@ public class SimulationEngine implements IEngine{
             };
             animals.get(animalIndex).move(move);
             animalIndex = (animalIndex + 1) % animals.size();
-            b.setText(map.toString());
-            f.revalidate();
-            f.repaint();
+//            b.setText(map.toString());
+//            f.revalidate();
+//            f.repaint();
         }
-        f.dispose();
+//        f.dispose();
     }
 }
