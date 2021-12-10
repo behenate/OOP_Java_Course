@@ -56,14 +56,10 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     private Vector2d fixPos(Vector2d pos, boolean flipY){
         Vector2d ll = boundary.lowerLeft();
         Vector2d ur = boundary.upperRight();
-        Vector2d o = new Vector2d(0,0);
-        if (ll.x < 0)
-            o = o.add(new Vector2d(-ll.x, 0));
-        if (ll.y < 0)
-            o = o.add(new Vector2d(0, -ll.y));
+        Vector2d o = new Vector2d(-ll.x,-ll.y);
         if (flipY)
             return new Vector2d(pos.x + o.x, ur.y - (pos.y-ll.y) + o.y);
-        return new Vector2d(pos.x + o.x, pos.y + o.y);
+        return pos.add(o);
     }
 
     public GridPane generateGrid(){
@@ -71,33 +67,27 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
         Vector2d ll = boundary.lowerLeft();
         Vector2d ur = boundary.upperRight();
         gridPane.setGridLinesVisible(true);
-        for (Label label:coordinateLabels) {
-            gridPane.getChildren().remove(label);
-        }
-        Label newLabel = new Label("y/x");
-        Vector2d initLabelPos = fixPos(new Vector2d(ll.x, ll.y), false);
-        gridPane.add(newLabel, initLabelPos.x, initLabelPos.y,1, 1);
-        coordinateLabels.add(newLabel);
-        for (int i = 0; i < ur.x-ll.x+2; i++) {
-            gridPane.getColumnConstraints().add(new ColumnConstraints(30));
-            gridPane.getRowConstraints().add(new RowConstraints(30));
-        }
+        Label newLabel = new Label("y/x");;
+        gridPane.add(newLabel, 0,0,1, 1);
         GridPane.setHalignment(newLabel, HPos.CENTER);
+        gridPane.getColumnConstraints().clear();
+        gridPane.getRowConstraints().clear();
+        for (int i = 0; i < ur.x-ll.x+2; i++) {
+            gridPane.getColumnConstraints().add(new ColumnConstraints(40));
+        }
+        for (int i = 0; i < ur.y-ll.y+2; i++){
+            gridPane.getRowConstraints().add(new RowConstraints(40));
+        }
+
         for (int i = 0; i < ur.x-ll.x+1; i++){
-            Vector2d pos = new Vector2d(ll.x+i, ll.y);
-            Vector2d posFixed = fixPos(pos, false);
             newLabel = new Label(Integer.toString(ll.x+i));
-            gridPane.add(newLabel, posFixed.x+1, posFixed.y ,1, 1);
-            coordinateLabels.add(newLabel);
+            gridPane.add(newLabel, i+1, 0 ,1, 1);
             GridPane.setHalignment(newLabel, HPos.CENTER);
         }
 
         for (int i = 0; i < ur.y-ll.y+1; i++){
-            Vector2d pos = new Vector2d(ll.x, ll.y+i);
-            Vector2d posFixed = fixPos(pos, false);
             newLabel = new Label(Integer.toString(ur.y-i));
-            gridPane.add(newLabel, posFixed.x, posFixed.y+1 ,1, 1);
-            coordinateLabels.add(newLabel);
+            gridPane.add(newLabel, 0, i+1 ,1, 1);
             GridPane.setHalignment(newLabel, HPos.CENTER);
         }
         for (int i = 0; i < ur.y-ll.y+1; i++) {
