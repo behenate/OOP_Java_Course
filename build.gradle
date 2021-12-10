@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
 group 'org.example'
@@ -20,4 +21,8 @@ test {
 }
 application {
     mainClassName = 'agh.ics.oop.World'
+}
+javafx {
+    version = "17"
+    modules = [ 'javafx.controls' ]
 }

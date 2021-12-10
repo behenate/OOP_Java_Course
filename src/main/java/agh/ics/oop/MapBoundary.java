@@ -1,5 +1,7 @@
 package agh.ics.oop;
 
+import javafx.application.Platform;
+
 import java.util.Comparator;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -26,6 +28,7 @@ public class MapBoundary implements IPositionChangeObserver{
         }
         xMap.add(newPosition);
         yMap.add(newPosition);
+
     }
     public Vector2d lowerLeft(){
         if (xMap.isEmpty())
