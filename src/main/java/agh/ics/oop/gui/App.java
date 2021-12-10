@@ -3,13 +3,10 @@ package agh.ics.oop.gui;
 import agh.ics.oop.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class App extends Application {
     AbstractWorldMap map;
@@ -19,17 +16,14 @@ public class App extends Application {
         ArrayList<MoveDirection> directions = new OptionsParser().parse(args);
         this.map = new GrassField(10);
         Vector2d[] positions = { new Vector2d(2,2), new Vector2d(-3,1) };
-        engine = new SimulationEngine(directions, map, positions);
-
+        this.engine = new SimulationEngine(directions, map, positions);
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        GridPane gridPane = this.map.getGrid();
-        Scene scene = new Scene(gridPane, 400, 400);
-
+        GridPane gridPane = this.map.generateGrid();
+        Scene scene = new Scene(gridPane, 700, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
         engine.run();
-
     }
 }

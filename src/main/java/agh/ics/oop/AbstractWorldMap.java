@@ -1,5 +1,6 @@
 package agh.ics.oop;
 
+import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,7 +16,7 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     protected final HashMap<Vector2d, IMapElement> mapElements = new LinkedHashMap<>();
     protected final MapVisualizer visualizer = new MapVisualizer(this);
     protected final MapBoundary boundary = new MapBoundary();
-    GridPane gridPane = new GridPane();
+    private final ArrayList<Label> coordinateLabels = new ArrayList<>();
     public boolean place(Animal animal) throws IllegalArgumentException {
         if (!canMoveTo(animal.getPosition())){
             throw new IllegalArgumentException("Pole " + animal.getPosition() + " nie jest dobrym polem dla zwierzaka!");
@@ -48,9 +49,6 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
         IMapElement movedElement = mapElements.get(oldPosition);
-        gridPane.getChildren().remove(movedElement.getLabel());
-        Vector2d mapPos = fixPos(movedElement.getPosition(), true);
-        gridPane.add(movedElement.getLabel(),mapPos.x+1, mapPos.y+1);
         mapElements.remove(oldPosition);
         mapElements.put(newPosition, movedElement);
     }
@@ -66,25 +64,31 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
         if (flipY)
             return new Vector2d(pos.x + o.x, ur.y - (pos.y-ll.y) + o.y);
         return new Vector2d(pos.x + o.x, pos.y + o.y);
-
     }
 
-    public GridPane getGrid(){
+    public GridPane generateGrid(){
+        GridPane gridPane = new GridPane();
         Vector2d ll = boundary.lowerLeft();
         Vector2d ur = boundary.upperRight();
         gridPane.setGridLinesVisible(true);
-
-        //Offset w przypadku ujemnych wartości
-
+        for (Label label:coordinateLabels) {
+            gridPane.getChildren().remove(label);
+        }
         Label newLabel = new Label("y/x");
         Vector2d initLabelPos = fixPos(new Vector2d(ll.x, ll.y), false);
         gridPane.add(newLabel, initLabelPos.x, initLabelPos.y,1, 1);
+        coordinateLabels.add(newLabel);
+        for (int i = 0; i < ur.x-ll.x+2; i++) {
+            gridPane.getColumnConstraints().add(new ColumnConstraints(30));
+            gridPane.getRowConstraints().add(new RowConstraints(30));
+        }
         GridPane.setHalignment(newLabel, HPos.CENTER);
         for (int i = 0; i < ur.x-ll.x+1; i++){
             Vector2d pos = new Vector2d(ll.x+i, ll.y);
             Vector2d posFixed = fixPos(pos, false);
             newLabel = new Label(Integer.toString(ll.x+i));
             gridPane.add(newLabel, posFixed.x+1, posFixed.y ,1, 1);
+            coordinateLabels.add(newLabel);
             GridPane.setHalignment(newLabel, HPos.CENTER);
         }
 
@@ -93,6 +97,7 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
             Vector2d posFixed = fixPos(pos, false);
             newLabel = new Label(Integer.toString(ur.y-i));
             gridPane.add(newLabel, posFixed.x, posFixed.y+1 ,1, 1);
+            coordinateLabels.add(newLabel);
             GridPane.setHalignment(newLabel, HPos.CENTER);
         }
         for (int i = 0; i < ur.y-ll.y+1; i++) {
@@ -102,13 +107,10 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
                 if (isOccupied(pos)){
                     IMapElement elem = (IMapElement) objectAt(pos);
                     gridPane.add(elem.getLabel(), posFixed.x + 1, posFixed.y + 1,1, 1);
-                    gridPane.setHalignment(elem.getLabel(), HPos.CENTER);
+                    GridPane.setHalignment(elem.getLabel(), HPos.CENTER);
                 }
-                gridPane.getColumnConstraints().add(new ColumnConstraints(20));
-                gridPane.getRowConstraints().add(new RowConstraints(20));
             }
         }
-
         return gridPane;
     }
     abstract Vector2d[] calculateBounds();
