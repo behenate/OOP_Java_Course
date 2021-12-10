@@ -1,7 +1,10 @@
 package agh.ics.oop;
 
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Animal extends AbstractWorldMapElement {
@@ -40,4 +43,13 @@ public class Animal extends AbstractWorldMapElement {
         return this.position.equals(position);
     }
 
+    @Override
+    public String getImagePath() {
+        return switch (this.mapDirection){
+            case NORTH -> "src/main/resources/up.png";
+            case SOUTH ->  "src/main/resources/down.png";
+            case WEST -> "src/main/resources/left.png";
+            default ->  "src/main/resources/right.png";
+        };
+    }
 }

@@ -20,7 +20,8 @@ public class Lab4IntegrationTests {
         ArrayList<MoveDirection> directions = testParser.parse(input);
         IWorldMap map = new RectangularMap(10, 5);
         Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
-        IEngine engine = new SimulationEngine(directions, map, positions);
+        IEngine engine = new SimulationEngine(map, positions,1);
+        engine.setMoveArray(directions);
         ArrayList<Animal> animals = new ArrayList<Animal>(Arrays.asList(
                 (Animal) map.objectAt(new Vector2d(2,2)),
                 (Animal) map.objectAt(new Vector2d(3, 4))
@@ -46,7 +47,8 @@ public class Lab4IntegrationTests {
         ArrayList<MoveDirection> directions = testParser.parse(input);
         IWorldMap map = new RectangularMap(10, 5);
         Vector2d[] positions = { new Vector2d(2,2), new Vector2d(2,1)};
-        IEngine engine = new SimulationEngine(directions, map, positions);
+        IEngine engine = new SimulationEngine( map, positions,1);
+        engine.setMoveArray(directions);
         ArrayList<Animal> animals = new ArrayList<Animal>(Arrays.asList(
                 (Animal) map.objectAt(new Vector2d(2,2)),
                 (Animal) map.objectAt(new Vector2d(2,1))
@@ -67,7 +69,8 @@ public class Lab4IntegrationTests {
         ArrayList<MoveDirection> directions = testParser.parse(input);
         IWorldMap map = new RectangularMap(10, 5);
         Vector2d[] positions = { new Vector2d(0,1),  new Vector2d(0,2)};
-        IEngine engine = new SimulationEngine(directions, map, positions);
+        IEngine engine = new SimulationEngine(map, positions,1);
+        engine.setMoveArray(directions);
         ArrayList<Animal> animals = new ArrayList<Animal>(Arrays.asList(
                 (Animal) map.objectAt(new Vector2d(0,1)),
                 (Animal) map.objectAt(new Vector2d(0, 2))

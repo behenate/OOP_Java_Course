@@ -19,7 +19,8 @@ public class RectangularMapTest {
                 new Vector2d(1,2),
                 new Vector2d(3,2)
         };
-        SimulationEngine engine = new SimulationEngine(moveArray, testMap, initialPositions);
+        SimulationEngine engine = new SimulationEngine(testMap, initialPositions,1);
+        engine.setMoveArray(moveArray);
         ArrayList<Animal> animals = new ArrayList<>();
         for (Vector2d position : initialPositions){
             animals.add((Animal) testMap.objectAt(position));
@@ -47,7 +48,8 @@ public class RectangularMapTest {
                 new Vector2d(0,2),
                 new Vector2d(4,2)
         };
-        SimulationEngine engine = new SimulationEngine(moveArray, testMap, initialPositions);
+        SimulationEngine engine = new SimulationEngine(testMap, initialPositions,1);
+        engine.setMoveArray(moveArray);
         ArrayList<Animal> animals = new ArrayList<>();
         for (Vector2d position : initialPositions){
             animals.add((Animal) testMap.objectAt(position));

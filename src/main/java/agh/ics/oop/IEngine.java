@@ -16,4 +16,5 @@ public interface IEngine {
      *
      */
     void run();
+    void setMoveArray(ArrayList<MoveDirection> directions);
 }
