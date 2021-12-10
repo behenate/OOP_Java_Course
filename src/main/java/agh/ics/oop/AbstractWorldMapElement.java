@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public abstract class AbstractWorldMapElement implements IMapElement{
     protected ArrayList<IPositionChangeObserver> observers = new ArrayList<>();
     protected Vector2d position;
-    protected Label label = new Label();
     public Vector2d getPosition(){
         return position;
     }
@@ -21,14 +20,6 @@ public abstract class AbstractWorldMapElement implements IMapElement{
         for (IPositionChangeObserver observer: observers) {
             observer.positionChanged(oldPosition, newPosition);
         }
-    }
-    @Override
-    public Label getLabel(){
-        return label;
-    }
-
-    public void setLabel(Label label){
-        this.label = label;
     }
 
 }

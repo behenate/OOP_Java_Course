@@ -10,7 +10,6 @@ public class Animal extends AbstractWorldMapElement {
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.map = map;
         this.position = initialPosition;
-        label=new Label(this.toString());
     }
     @Override
     public String toString() {
