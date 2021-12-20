@@ -25,7 +25,7 @@ public class App extends Application implements IMapChangeObserver {
     public void init(){
 
         this.map = new GrassField(10);
-        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,3) };
+        Vector2d[] positions = {new Vector2d(2,4), new Vector2d(3,5)};
         this.engine = new SimulationEngine(map, positions, 300);
         engine.addObserver(this);
 

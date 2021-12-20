@@ -14,13 +14,13 @@ import java.io.FileNotFoundException;
 
 public class GuiElementBox {
     private VBox verticalBox;
-    public GuiElementBox(IMapElement element){
+    public GuiElementBox(IMapElement element, String labelText){
         try{
             Image image = new Image(new FileInputStream(element.getImagePath()));
             ImageView imageView = new ImageView(image);
             imageView.setFitHeight(20);
             imageView.setFitWidth(20);
-            Label label = new Label(element.getPosition().toString());
+            Label label = new Label(labelText);
             verticalBox = new VBox();
             verticalBox.getChildren().addAll(imageView,  label);
             verticalBox.setAlignment(Pos.CENTER);

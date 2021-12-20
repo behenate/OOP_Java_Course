@@ -95,7 +95,12 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
                 Vector2d posFixed = fixPos(pos, true);
                 if (isOccupied(pos)){
                     IMapElement elem = (IMapElement) objectAt(pos);
-                    GuiElementBox guiBox = new GuiElementBox(elem);
+                    String labelText = "";
+                    if (elem instanceof Animal)
+                        labelText = elem.getPosition().toString();
+                    else if( elem instanceof Grass)
+                        labelText = "Grass";
+                    GuiElementBox guiBox = new GuiElementBox(elem, labelText);
                     gridPane.add(guiBox.getVBox(), posFixed.x + 1, posFixed.y + 1,1, 1);
                     GridPane.setHalignment(newLabel, HPos.CENTER);
                 }

@@ -36,6 +36,7 @@ public class SimulationEngine implements IEngine, Runnable{
             for (IMapChangeObserver observer: observers) {
                 observer.mapChanged();
             }
+
         }
 
 
