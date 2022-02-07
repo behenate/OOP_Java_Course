@@ -1,6 +1,11 @@
-# Dżem Dobry
+# Object Oriented Programming Java Course
 
-### Tutaj znajdują się rozwiązania zadań z programowania obiektowego wykonane przeze mnie, Wojciecha Dróżdż. 
+### This repository contains solutions for the Object Oriented Programming Java Course on AGH UST. 
+Each week new functionality had to be added to the applicaiton. Descriptions for each task are located here, in the "labX" folders:
+https://github.com/apohllo/obiektowe-lab
+
+
+Below are some cute doggos, enjoy
 
 ![Chemistry dog no idea - i have no idea what i'm doing](https://memegenerator.net/img/instances/50289227.jpg)
 
@@ -26,12 +31,6 @@
 
 ![Border collie - wesoły pies z dużym temperamentem [Charakter, pielęgnacja,  opinie]](https://bi.im-g.pl/im/88/dc/19/z27116424Q,Border-collie---wesoly-pies-z-duzym-temperamentem-.jpg)
 
-
-
-
-
-
-### Uwaga! Każdy obejrzany piesek oznacza +1 do oceny końcowej z laboratrium :)) 
 
 
 
